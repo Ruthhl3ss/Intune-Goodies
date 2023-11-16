@@ -107,6 +107,7 @@ fi
 
 echo "$(date) | Enabling Magnification"
 defaults write com.apple.dock magnification -boolean YES
+defaults write com.apple.dock largesize -int 50
 
 echo "$(date) | Enable Dim Hidden Apps in Dock"
 defaults write com.apple.dock showhidden -bool true
