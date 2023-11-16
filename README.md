@@ -1,2 +1,2 @@
 # Intune-Scripts
-Microsoft Intune scripts to have some fun
+This repository contains scripts I use to configure or manage settings on Windows or macOS devices.
