@@ -1,19 +1,22 @@
-#!/bin/bash
-#set -x
-#remove the previous line if you want to run the script line by line.
-#in terminal type: bash -x scriptname
+# !/bin/bash
+# set -x
+# remove the previous line if you want to run the script line by line.
+# in terminal type: bash -x scriptname
 
-#NOTES
-#original script can be found at: https://github.com/microsoft/shell-intune-samples/blob/master/macOS/Config/Dock/addAppstoDock.sh
-#original script will also add apps to dock.This script will only add network shares to the dock 
+# NOTES
+# original script can be found at: https://github.com/microsoft/shell-intune-samples/blob/master/macOS/Config/Dock/addAppstoDock.sh
+# original script will also add apps to dock.This script will only add network shares to the dock 
 
-#SCRIPT VERSION/HISTORY:
-#15-11-2023 - Oktay Sari - original script downsized to only deploy network shares without anything extra
-#16-11-2023 - Oktay Sari - script restored with original functions and checks. Only part that adds apps to the dock is removed. This script will only add network shares to the dock 
+# SCRIPT VERSION/HISTORY:
+# 15-11-2023 - Oktay Sari - original script downsized to only deploy network shares without anything extra
+# 16-11-2023 - Oktay Sari - script restored with original functions and checks. Only part that adds apps to the dock is removed. This script will only add network shares to the dock 
 
-#ROADMAP/WISHLIST:
-#1: Update icons for (smb shares) shortcuts to custom icons
+# ROADMAP/WISHLIST:
+# 1: Update icons for (smb shares) shortcuts to custom icons
 
+# Requirements:
+# MDM to deploy script
+# to access on-premise network shares, you will have to configure a VPN on your modern workplace.
 
 
 # [Removed the original script header]
@@ -32,7 +35,6 @@ if [[ -f "$HOME/Library/Logs/prepareDock" ]]; then
   exit 0
 
 fi
-
 
 # define your network shares here
 netshares=(   "smb://192.168.0.12/Data"
@@ -83,8 +85,7 @@ waitForDesktop () {
 waitForDesktop
 
 START=$(date +%s) # define loop start time so we can timeout gracefully
-echo "$(date) | Have a break...have a coffee...we are getting ready..."
-
+echo "$(date) | Have a break...have a coffee...we are getting things ready..."
 
   # If we've waited for too long, we should just carry on
   if [[ $(($(date +%s) - $START)) -ge $secondsToWaitForOtherApps ]]; then
@@ -104,6 +105,7 @@ if [[ "$netshares" ]]; then
   done
 fi
 
+# Configure other Dock settings
 
 echo "$(date) | Enabling Magnification"
 defaults write com.apple.dock magnification -boolean YES
