@@ -10,6 +10,8 @@ You should use the minimalistic version only to test things quick and dirty!
 The original script can be found at: https://github.com/microsoft/shell-intune-samples/blob/master/macOS/Config/Dock/addAppstoDock.sh
 The original script will also add apps to dock.This script will only add network shares to the dock.
 
+Have a look at https://allthingscloud.blog/deploy-network-drive-mappings-on-macos-with-microsoft-intune/ for more info on this script
+
 
 ## ROADMAP/WISHLIST:
 1: Update icons for (smb shares) shortcuts to custom icons
