@@ -1,5 +1,5 @@
-# !/bin/bash
-# set -x
+#!/bin/bash
+#set -x
 # remove the previous line if you want to run the script line by line.
 # in terminal type: bash -x scriptname
 
