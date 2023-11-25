@@ -1,10 +1,13 @@
 # Script to add SMB network shares to the Macos Dock
 
-This script will add SMB network shares to the macOS dock. There are two versions in this directory:
+This script will add SMB network shares to the macOS dock. There are 3 versions in this directory:
+- add-smb-shares-2-dock-enhanced.sh
 - add-smb-shares-2-dock.sh
 - minimalistic-version-add-smb-shares-2-dock.sh
 
-You should use the minimalistic version only to test things quick and dirty!
+- The new script add-smb-shares-2-dock-enhanced.sh is updated with functions to update shortcuts or to add/remove shortcuts.
+- You should use the minimalistic version only to test things quick and dirty! 
+
 
 ## NOTES
 The original script can be found at: https://github.com/microsoft/shell-intune-samples/blob/master/macOS/Config/Dock/addAppstoDock.sh
