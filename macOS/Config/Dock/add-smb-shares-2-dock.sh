@@ -1,18 +1,28 @@
 #!/bin/bash
 #set -x
+# -------------------------------------------------------------------------------------------------------------------------------
 # remove the previous line if you want to run the script line by line.
 # in terminal type: bash -x scriptname
 
-# NOTES
+# DISCLAIMER: 
+# This script is provided "as is" without warranties or guarantees of any kind. While it has been created to fulfill specific functions 
+# and has worked effectively for my personal requirements, its performance may vary in different environments or use-cases. 
+# Users are advised to employ this script at their own discretion and risk. 
+# No responsibility will be assumed for any direct, indirect, incidental, or consequential damages that may arise from its use.
+# ALWAYS TEST it in a controlled environment before deploying it in your production environment!
+# -------------------------------------------------------------------------------------------------------------------------------
+
+# Credits where credit's due:
 # original script can be found at: https://github.com/microsoft/shell-intune-samples/blob/master/macOS/Config/Dock/addAppstoDock.sh
-# original script will also add apps to dock.This script will only add network shares to the dock 
+# original script will also add apps to dock.This script will only add network shares to the dock
 
 # SCRIPT VERSION/HISTORY:
 # 15-11-2023 - Oktay Sari - original script downsized to only deploy network shares without anything extra
 # 16-11-2023 - Oktay Sari - script restored with original functions and checks. Only part that adds apps to the dock is removed. This script will only add network shares to the dock 
+# 26-11 There is an updated version for this script named add-smb-shares-2-dock-enhanced.sh This new script can also update shortcuts that are already deployd. 
 
 # ROADMAP/WISHLIST:
-# 1: Update icons for (smb shares) shortcuts to custom icons
+# 1: Update icons for (smb shares) shortcuts to custom icons. This one is a tough one. Feel free to help out. 
 
 # Requirements:
 # MDM to deploy script
