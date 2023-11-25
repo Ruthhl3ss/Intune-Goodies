@@ -21,10 +21,13 @@
 # https://github.com/oktay-sari/
 # Since I made many changes compared to the orifinal script, I think it's OK to put my name on this script.
 
+# NOTE: 
+# This script is by no means perfect. I'm als not an expert bash programmer. 
+# If you think you have a good idea to further enhance this script, then please reach out.
+
 # SCRIPT VERSION/HISTORY:
 # 15-11-2023 - Oktay Sari - original script downsized to only deploy network shares without anything extra
 # 16-11-2023 - Oktay Sari - script restored with original functions and checks. Only part that adds apps to the dock is removed. This script will only add network shares to the dock 
-# 23-11-2023 - Oktay Sari - Add remove items in dock section "others" before continuing
 # 24-11-2023 - Oktay Sari - Update other Dock settings like resize etc. 
 # 25-11-2023 - Oktay Sari - Added Functions to handle Dock shortcut updates when shares change
 # 25-11-2023 - Oktay Sari - Removed code to stop running script when checkfile exist. This is no longer neccessary because the script can now be scheduled to run with certain interval.
