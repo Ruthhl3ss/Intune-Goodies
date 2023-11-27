@@ -19,10 +19,10 @@
 # AUTHOR: Oktay Sari
 # https://allthingscloud.blog 
 # https://github.com/oktay-sari/
-# Since I made many changes compared to the orifinal script, I think it's OK to put my name on this script.
+# Since I made many changes compared to the original script, I think it's OK to put my name on this script.
 
 # NOTE: 
-# This script is by no means perfect. I'm als not an expert bash programmer. 
+# This script is by no means perfect. I'm also not an expert bash programmer. 
 # If you think you have a good idea to further enhance this script, then please reach out.
 
 # SCRIPT VERSION/HISTORY:
