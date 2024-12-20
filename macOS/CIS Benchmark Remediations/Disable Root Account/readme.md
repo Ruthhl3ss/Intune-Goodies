@@ -1,5 +1,5 @@
 # Disable Root User account 
-This Custom Script is required when implementing following CIS or NIST Recommendations for macOS:
+This Custom Script is required when implementing following CIS Recommendations for macOS:
 
 CIS: 5.6 Ensure the "root" Account Is Disabled
 
