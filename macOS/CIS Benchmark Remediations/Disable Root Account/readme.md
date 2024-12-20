@@ -10,3 +10,5 @@ Script frequency : Not configured (Note: If users are local admin on their devic
 Number of times to retry if script fails : 3  
 
 ## Notes
+You should also use the Custom Attribute script:CheckRootAccountStatus.sh to periodicallly check the root account status  
+If combined, make sure to schedule the scripts to your own needs: Shell scripts provided in custom attribute profiles are run every 8 hours on managed Macs and reported.
