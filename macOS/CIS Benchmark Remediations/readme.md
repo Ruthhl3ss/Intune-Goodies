@@ -1,4 +1,4 @@
-# CIS Benchmark Level 1 - Custom Implementation
+# CIS Benchmark - Custom Implementation
 
 Welcome to the **CIS Benchmark Level 1** repository. This project contains a set of scripts and configuration files designed to align with the **CIS (Center for Internet Security) Level 1 benchmarks**, which provide foundational cybersecurity settings suitable for most organizations. These benchmarks are tailored to help companies start securing their systems and devices effectively.
 
