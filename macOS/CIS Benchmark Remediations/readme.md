@@ -9,6 +9,7 @@ It is your responsibility to:
 - Test all scripts and configurations in a non-production environment.
 - Validate their impact on your specific infrastructure and requirements.
 - Customize them as needed to fit your organization's security policies and operational needs.
+- Perhaps most importantly; You should understand what these configurations actually do and what their impact is.
 
 **By using these scripts, you accept full responsibility for any changes made to your systems.**
 
@@ -19,7 +20,7 @@ This repository includes custom implementations of these benchmarks, with slight
 
 ## Features
 - **Customizable:** Designed to be a starting point; modify as per your organization's needs.
-- **Comprehensive:** Covers a broad range of CIS Level 1 recommendations, including system hardening, user management, logging, and auditing.
+- **Comprehensive:** Covers a broad range of CIS Level 1 recommendations, including system hardening, user account management, logging, and auditing.
 - **macOS:** Scripts and configurations are created for macOS and tested on macOS Sequoia 15.2
 
 ## Usage Instructions
