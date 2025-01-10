@@ -1,1 +1,0 @@
-Intune macOS shell scripts
