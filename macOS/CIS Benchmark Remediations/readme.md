@@ -18,6 +18,12 @@ It is your responsibility to:
 **This repository includes custom implementations of these benchmarks, with slight modifications to enhance usability and compatibility across various environments.**
 ***Implementing the scripts and configuration profiles does not mean you are compliant with the CIS (or any other) benchmark***
 
+**If you want to audit your security state on macOS devices, have a look at:**
+
+- https://github.com/usnistgov/macos_security
+- https://trusted.jamf.com/docs/establishing-compliance-baselines
+- https://www.cisecurity.org/controls/cis-controls-self-assessment-tool-cis-csat
+
 ## What is CIS Benchmark Level 1?
 The CIS Level 1 benchmarks are a set of basic security configurations recommended by the Center for Internet Security. These settings are aimed at improving security without significantly impacting functionality, making them ideal for most organizations as a baseline for security hardening.
 
