@@ -16,7 +16,7 @@ It is your responsibility to:
 ## What is CIS Benchmark Level 1?
 The CIS Level 1 benchmarks are a set of basic security configurations recommended by the Center for Internet Security. These settings are aimed at improving security without significantly impacting functionality, making them ideal for most organizations as a baseline for security hardening.
 
-###This repository includes custom implementations of these benchmarks, with slight modifications to enhance usability and compatibility across various environments.
+### This repository includes custom implementations of these benchmarks, with slight modifications to enhance usability and compatibility across various environments.
 
 ## Features
 - **Customizable:** Designed to be a starting point; modify as per your organization's needs.
