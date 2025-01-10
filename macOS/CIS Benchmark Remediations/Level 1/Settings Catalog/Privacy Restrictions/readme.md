@@ -1,7 +1,5 @@
 ## CIS Benchmark - Custom Implementation
 
-This configuration profile disables iCloud Drive Document and Desktop Sync
-
 **Privacy Restrictions: Safeguard Data and Protect User Privacy**
 
 Privacy restrictions in macOS play a vital role in controlling how diagnostic and usage data is shared, ensuring compliance with organizational policies and enhancing user privacy. 

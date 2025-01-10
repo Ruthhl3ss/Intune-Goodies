@@ -1,7 +1,5 @@
 ## CIS Benchmark - Custom Implementation
 
-This configuration profile disables iCloud Drive Document and Desktop Sync
-
 **Password Management: Keep It Secure, Keep It Practical**
 
 **HIGH IMPACT:** Make sure "Change At Next Auth" is disabled. Check this configuration before deploying it. 

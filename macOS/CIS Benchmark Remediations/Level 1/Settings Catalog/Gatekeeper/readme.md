@@ -1,7 +1,5 @@
 ## CIS Benchmark - Custom Implementation
 
-This configuration profile enables Gatekeeper
-
 **Gatekeeper: Your Mac’s First Line of Defense:**
 
 Gatekeeper is macOS’s built-in security feature that helps protect your system from running untrusted or malicious software. 
