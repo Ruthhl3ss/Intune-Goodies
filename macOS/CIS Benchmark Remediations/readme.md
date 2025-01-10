@@ -9,7 +9,7 @@ It is your responsibility to:
 - Test all scripts and configurations in a non-production environment.
 - Validate their impact on your specific infrastructure and requirements.
 - Customize them as needed to fit your organization's security policies and operational needs.
-- Perhaps most importantly; You should understand what these configurations actually do and what their impact is.
+- Perhaps most importantly; You should understand what these configurations actually do and what the impact is.
 
 **By using these scripts, you accept full responsibility for any changes made to your systems.**
 
