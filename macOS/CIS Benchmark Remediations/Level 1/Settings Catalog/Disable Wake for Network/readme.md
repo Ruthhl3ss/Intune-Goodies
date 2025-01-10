@@ -1,8 +1,8 @@
 ## CIS Benchmark - Custom Implementation
 
-This configuration profile disables the guest account
+This configuration profile disables Wake for LAN
 
-**Note:**
+**disables Wake (me up..before you...)for LAN**
 
 The "Wake for Network Access" feature allows a macOS device to wake from sleep mode to perform tasks, 
 such as providing access to shared resources or responding to management tools. 
