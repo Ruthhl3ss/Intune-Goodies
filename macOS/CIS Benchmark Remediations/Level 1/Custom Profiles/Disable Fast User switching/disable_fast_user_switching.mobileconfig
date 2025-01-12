@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+    <key>PayloadDisplayName</key>
+    <string>Optimized macOS Security Policy</string>
+    <key>PayloadIdentifier</key>
+    <string>com.company.optimizedsecuritypolicy</string>
+    <key>PayloadUUID</key>
+    <string>12345678-1234-1234-1234-123456789012</string>
+    <key>PayloadScope</key>
+    <string>System</string>
+    <key>PayloadContent</key>
+    <array>
+
+        <!-- Disable Fast User Switching -->
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.loginwindow</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.company.securitypolicy.fastuserswitching</string>
+            <key>PayloadUUID</key>
+            <string>abcdef12-3456-7890-abcd-ef1234567890</string>
+            <key>PayloadEnabled</key>
+            <true/>
+            <key>DisableFastUserSwitching</key>
+            <true/>
+        </dict>
+
+        <!-- Screen Saver Authorization Policy -->
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.security</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.company.securitypolicy.authpolicy</string>
+            <key>PayloadUUID</key>
+            <string>78901234-5678-90ab-cdef-1234567890ab</string>
+            <key>PayloadEnabled</key>
+            <true/>
+            <key>AuthorizationDB</key>
+            <dict>
+                <key>system.login.screensaver</key>
+                <string>authenticate</string> <!-- Keeps Touch ID enabled -->
+            </dict>
+        </dict>
+
+    </array>
+</dict>
+</plist>

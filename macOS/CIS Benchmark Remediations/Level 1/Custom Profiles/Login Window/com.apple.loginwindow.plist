@@ -1,0 +1,8 @@
+	<key>LoginwindowText</key>
+	<string>AllThingsCloud</string>
+	<key>RetriesUntilHint</key>
+	<integer>0</integer>
+	<key>SHOWFULLNAME</key>
+	<true/>
+	<key>com.apple.login.mcx.DisableAutoLoginClient</key>
+	<true/>
