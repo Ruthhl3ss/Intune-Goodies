@@ -1,14 +1,30 @@
-## CIS Benchmark - Custom Implementation
+## Forked files
 
 **Overview**  
-The "Improve Assistive Voice Features" setting in macOS shares audio recordings and transcripts of interactions with Vocal Shortcuts and Voice Control to Apple for improvement purposes. 
-While this data is anonymized, it may still include personal or sensitive organizational information, making it important to disable this feature unless explicitly approved.
+While most of the scripts are my own, some of them are saved here from other repositories for my own (and perhaps your) convenience. 
+However, collected/forked scripts/file will always have the original authors name in the script and I'll always try to link to the original files.
+The original files can be found at: https://github.com/microsoft/shell-intune-samples/tree/master/macOS . 
 
-**Why?**
-Sharing recordings and transcripts, even anonymously, poses a potential risk of exposing personal or organizational data to a third party. 
-Organizations should evaluate the risks of such data sharing and ensure it aligns with their policies before enabling this feature. 
-By default, disabling this setting enhances privacy and reduces the risk of unintentional data exposure.  
+**macOS - Hardening - Terminal Full Disk Access**
 
-- **Improves Privacy**: Prevents audio recordings and transcripts from being shared with Apple.  
-- **Protects Sensitive Data**: Ensures that potentially personal or organizational information is not forwarded to a third party.  
-- **No Impact on Features**: Disabling this setting does not affect the functionality of assistive voice features on macOS.  
+**Overview**
+This configuration allows **Full Disk Access** for the Terminal app, **which is necessary for implementing specific security recommendations** outlined in CIS and NIST benchmarks for macOS. 
+It ensures that administrative tasks and security configurations requiring Terminal access to system files can be completed effectively.  
+
+Enabling Full Disk Access for Terminal is essential for enforcing key security measures, such as:  
+- **CIS Recommendations**:
+  - Ensuring **Remote Login** is disabled.
+  - Disabling **Remote Apple Events**.  
+- **NIST Guidelines**:
+  - Disabling the **SSH Server** for remote access sessions.
+  - Disabling **Remote Apple Events**.  
+
+By providing Terminal with Full Disk Access, administrators can execute required configurations while maintaining compliance with security frameworks.  
+
+**Key Points**
+- **Required for Compliance**: Necessary to meet CIS and NIST hardening standards.  
+- **Scoped Access**: Ensures only the Terminal app has the required access, limiting potential misuse.  
+- **No Impact to Functionality**: This configuration does not affect standard system operations or user workflows.  
+
+**NOTE**
+Make sure you also implement CIS recommnedation **2.6.2.1 Audit Full Disk Access for Applications**
