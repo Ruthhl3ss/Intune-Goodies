@@ -6,6 +6,7 @@ This helps ensure that only the current user can unlock their session, even if a
 At the same time, the setup keeps **Touch ID** functional, allowing users to unlock their devices quickly—while still maintaining security by limiting access to the active user’s session only.  
 
 **Why disable fast userswitcing?** 
+
 Fast User Switching might seem convenient, but it can create vulnerabilities by allowing others to log in without fully ending the current session. 
 Disabling this feature ensures that each user’s session is fully secure, minimizing the risk of unauthorized access.  
 

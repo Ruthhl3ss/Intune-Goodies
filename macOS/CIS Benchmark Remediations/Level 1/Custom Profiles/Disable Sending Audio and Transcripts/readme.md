@@ -5,6 +5,7 @@ The "Improve Assistive Voice Features" setting in macOS shares audio recordings 
 While this data is anonymized, it may still include personal or sensitive organizational information, making it important to disable this feature unless explicitly approved.
 
 **Why?**
+
 Sharing recordings and transcripts, even anonymously, poses a potential risk of exposing personal or organizational data to a third party. 
 Organizations should evaluate the risks of such data sharing and ensure it aligns with their policies before enabling this feature. 
 By default, disabling this setting enhances privacy and reduces the risk of unintentional data exposure.  
