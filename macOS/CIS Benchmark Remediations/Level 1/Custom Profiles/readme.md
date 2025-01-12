@@ -41,8 +41,8 @@ Most of the policy names will have the following format:
 - config.json file               : export with Intunemanagement
 
 **What to import?** Only the .json files if you can live with the naming convention I used. 
-Otherwise, create a configuration profile in Intune using a template, and then choose for:
-Custom          : when using a .mobileconfig file
-Preference file : when using a .plist file.
+Otherwise, create a **configuration profile** in Intune using a **template**, and then choose for:
+- **Custom**          : when using a **.mobileconfig** file
+- **Preference file** : when using a **.plist** file.
 
 -----------------------------------------------------------
