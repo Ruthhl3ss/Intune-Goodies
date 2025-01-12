@@ -1,8 +1,19 @@
-# Disable Root User account 
-This Custom Script is required when implementing following CIS Recommendations for macOS:
+# macOS - Hardening - Disable the "root" Account  
 
-CIS: 5.6 Ensure the "root" Account Is Disabled
+## Overview  
+The **root** account is a superuser account with full access to the system. It can perform any action and modify any file. While powerful, enabling the root account introduces significant security risks and should remain disabled.  
 
+## Why It’s Important  
+- **Reduces Risk**: A disabled root account minimizes the chance of unauthorized access or system compromise.  
+- **Prevents Errors**: Actions performed as root can impact the entire system, increasing the risk of accidental changes or damage.  
+- **Encourages Secure Practices**: The `sudo` command provides controlled access to administrative privileges, with password protection and logging of actions.  
+- **Default Setting**: macOS disables the root account by default, and keeping it disabled is an essential security measure.  
+
+## Key Points  
+- The root account should remain disabled to reduce system vulnerabilities.  
+- Administrators should use the `sudo` command for tasks requiring elevated privileges.  
+- Regular audits should confirm that the root account is not enabled.  
+---------------------------------------------------------------------
 ## Script Settings
 Run script as signed-in user : No  
 Hide script notifications on devices : Yes  
