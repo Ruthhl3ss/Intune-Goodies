@@ -6,6 +6,8 @@ Most of the confuration items and profiles here are exported using the wonderful
 I've tried to create order in the chaos by structuring all files in it's own folder. Some folders will have 2 or more files. 
 
 When you want no hassle, import the json files. This will import the policy itself, the policy name and descriptions I used. Feel **free to edit any file you import.**
+
+
 Most of the policy names will have the following format: 
 
 **Name:** macOS - Hardening - CIS_L1 - Disable AirDrop and Handoff
