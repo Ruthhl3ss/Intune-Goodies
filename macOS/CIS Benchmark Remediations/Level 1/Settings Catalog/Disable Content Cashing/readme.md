@@ -13,11 +13,6 @@ This configuration enhances macOS security and aligns with CIS benchmarks. It he
 - Supports organizational security policies and compliance efforts.
 
 ---
-
-## CIS Benchmark - Custom Implementation
-
-This configuration profile disables content cashing 
-
 **Note:**
 
 Content Caching, introduced in macOS High Sierra (10.13), is a feature designed to reduce internet bandwidth usage by caching Apple updates and content locally. 
