@@ -13,9 +13,6 @@ This configuration enhances macOS security and aligns with CIS benchmarks. It he
 - Supports organizational security policies and compliance efforts.
 
 ---
-
-## CIS Benchmark - Custom Implementation
-
 This configuration profile disables the guest account
 
 **Note:**
