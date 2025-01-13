@@ -1,4 +1,18 @@
-## CIS Benchmark - Custom Implementation
+# CIS Benchmark - Custom Implementation
+
+**Configure Time Server**
+
+This configuration sets a reliable time server for macOS devices to ensure accurate system time, which is essential for secure operations.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
 
 **Time Server Settings: Ensure Accurate and Consistent Timekeeping**  
 

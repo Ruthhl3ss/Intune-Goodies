@@ -1,6 +1,18 @@
-## CIS Benchmark - Custom Implementation
+# CIS Benchmark - Custom Implementation
 
-This configuration profile disables the guest account
+**Disable Internet Sharing**
+
+This configuration disables the ability to modify Internet Sharing settings, ensuring that the system cannot share its network connection unintentionally.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
 
 **Note:**
 

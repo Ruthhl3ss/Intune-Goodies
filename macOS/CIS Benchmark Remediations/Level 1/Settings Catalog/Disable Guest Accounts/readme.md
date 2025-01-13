@@ -1,3 +1,19 @@
+# CIS Benchmark - Custom Implementation
+
+**Disable Guest Accounts**
+
+This configuration disables guest accounts on macOS, ensuring that unauthorized users cannot access the system.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
+
 ## CIS Benchmark - Custom Implementation
 
 This configuration profile disables the guest account

@@ -1,4 +1,18 @@
-## CIS Benchmark - Custom Implementation
+# CIS Benchmark - Custom Implementation
+
+**Enforce Privacy Restrictions**
+
+This configuration enforces privacy settings to limit data sharing and enhance user privacy on macOS devices.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
 
 **Privacy Restrictions: Safeguard Data and Protect User Privacy**
 

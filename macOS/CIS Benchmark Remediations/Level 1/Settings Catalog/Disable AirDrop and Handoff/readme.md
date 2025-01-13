@@ -1,3 +1,19 @@
+# CIS Benchmark - Custom Implementation
+
+**Disable AirDrop and Handoff**
+
+This configuration disables AirDrop and Handoff features, reducing the risk of unintended data sharing or exposure.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
+
 ## CIS Benchmark - Custom Implementation
 
 This configuration profile Ensures AirDrop Is Disabled When Not Actively Transferring Files. 
@@ -11,4 +27,3 @@ AirPlay Receiver, which lets you share your screen with other Apple devices, is 
 - Allow Air Play Incoming Requests   > Disabled
 - Allow Activity Continuation        > False
 - Allow AirDrop                      > False
-

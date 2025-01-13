@@ -1,3 +1,19 @@
+# CIS Benchmark - Custom Implementation
+
+**Disable Content Caching**
+
+This configuration disables macOS content caching to prevent unauthorized use of the system as a caching server.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
+
 ## CIS Benchmark - Custom Implementation
 
 This configuration profile disables content cashing 

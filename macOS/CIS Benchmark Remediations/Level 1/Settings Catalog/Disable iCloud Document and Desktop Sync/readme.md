@@ -1,3 +1,19 @@
+# CIS Benchmark - Custom Implementation
+
+**Disable iCloud Document and Desktop Sync**
+
+This configuration disables the automatic synchronization of Desktop and Documents folders to iCloud Drive, reducing risks associated with cloud storage.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
+
 ## CIS Benchmark - Custom Implementation
 
 This configuration profile disables iCloud Drive Document and Desktop Sync

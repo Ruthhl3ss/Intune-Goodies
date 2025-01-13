@@ -1,7 +1,18 @@
-## CIS Benchmark - Custom Implementation
+# CIS Benchmark - Custom Implementation
 
-This configuration profile is for screensaver settings
+**Enable Screensaver Password**
 
+This configuration ensures that a password is required to unlock the system after the screensaver activates, enhancing physical security.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
 
 **Screensaver Settings: Enhance Security with Idle Time Protection**
 

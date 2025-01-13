@@ -1,5 +1,18 @@
-## CIS Benchmark - Custom Implementation
+# CIS Benchmark - Custom Implementation
 
+**Enable Gatekeeper**
+
+This configuration ensures that Gatekeeper is enabled, allowing only trusted and verified applications to run on macOS.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
 **Gatekeeper: Your Mac’s First Line of Defense:**
 
 Gatekeeper is macOS’s built-in security feature that helps protect your system from running untrusted or malicious software. 

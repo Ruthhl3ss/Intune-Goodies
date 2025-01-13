@@ -1,7 +1,18 @@
-## CIS Benchmark - Custom Implementation
+# CIS Benchmark - Custom Implementation
 
-This configuration profile disables Wake for LAN
+**Disable Wake for Network Access**
 
+This configuration disables the ability for macOS devices to wake for network access, reducing risks of unauthorized remote access.
+
+**Importance**  
+This configuration enhances macOS security and aligns with CIS benchmarks. It helps mitigate potential vulnerabilities by implementing recommended settings.
+
+**Key Points**  
+- Implements recommended security settings to reduce risk.  
+- Aligns with CIS or other hardening standards for macOS.  
+- Supports organizational security policies and compliance efforts.
+
+---
 **disables Wake (me up..before you...)for LAN**
 
 The "Wake for Network Access" feature allows a macOS device to wake from sleep mode to perform tasks, 
