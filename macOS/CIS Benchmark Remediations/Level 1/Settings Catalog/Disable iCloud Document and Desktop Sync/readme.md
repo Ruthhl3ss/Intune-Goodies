@@ -13,11 +13,6 @@ This configuration enhances macOS security and aligns with CIS benchmarks. It he
 - Supports organizational security policies and compliance efforts.
 
 ---
-
-## CIS Benchmark - Custom Implementation
-
-This configuration profile disables iCloud Drive Document and Desktop Sync
-
 **Note:**
 
 Starting with macOS 10.12, Apple introduced the ability to automatically synchronize the contents of the Desktop and Documents folders with iCloud Drive. 
