@@ -1,25 +1,25 @@
-# macOS - Hardening - Disable the "root" Account  
+# CIS Benchmark - Custom Implementation
 
-## Overview  
-The **root** account is a superuser account with full access to the system. It can perform any action and modify any file. While powerful, enabling the root account introduces significant security risks and should remain disabled.  
+**macOS - Hardening - Disable Root Account**
 
-## Why It’s Important  
-- **Reduces Risk**: A disabled root account minimizes the chance of unauthorized access or system compromise.  
-- **Prevents Errors**: Actions performed as root can impact the entire system, increasing the risk of accidental changes or damage.  
-- **Encourages Secure Practices**: The `sudo` command provides controlled access to administrative privileges, with password protection and logging of actions.  
-- **Default Setting**: macOS disables the root account by default, and keeping it disabled is an essential security measure.  
+This configuration disables the root account on macOS, ensuring that the system is protected from unauthorized superuser access.
 
-## Key Points  
-- The root account should remain disabled to reduce system vulnerabilities.  
-- Administrators should use the `sudo` command for tasks requiring elevated privileges.  
-- Regular audits should confirm that the root account is not enabled.  
----------------------------------------------------------------------
-## Script Settings
-Run script as signed-in user : No  
-Hide script notifications on devices : Yes  
-Script frequency : Not configured (Note: If users are local admin on their device, consider to run this more frequently ("Every 1 day")  
-Number of times to retry if script fails : 3  
+**Importance**  
+The root account has unrestricted access to the system and can perform any operation, making it a high-value target for attackers. Disabling this account minimizes the risk of misuse or exploitation.
 
-## Notes
-You should also use the Custom Attribute script:CheckRootAccountStatus.sh to periodicallly check the root account status  
-If combined, make sure to schedule the scripts to your own needs: Shell scripts provided in custom attribute profiles are run every 8 hours on managed Macs and reported.
+**Key Points**  
+- Prevents unauthorized superuser access.  
+- Reduces the attack surface by limiting privilege escalation.  
+- Aligns with CIS Level 1 benchmarks for securing macOS.  
+
+**Script Settings**  
+- **Run script as signed-in user**: No  
+- **Hide script notifications on devices**: Yes  
+- **Script frequency**: Not configured *(Got admin users roaming freely? Run this script more often, like every day, to keep things locked down tight!)*  
+- **Number of times to retry if script fails**: 3  
+
+This configuration is essential for maintaining a secure macOS environment.
+
+
+
+
