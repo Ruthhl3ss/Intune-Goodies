@@ -13,8 +13,6 @@ This configuration enhances macOS security and aligns with CIS benchmarks. It he
 - Supports organizational security policies and compliance efforts.
 
 ---
-This configuration profile disables the guest account
-
 **Note:**
 
 The guest account in macOS provides access to the system without requiring a username or password. 
