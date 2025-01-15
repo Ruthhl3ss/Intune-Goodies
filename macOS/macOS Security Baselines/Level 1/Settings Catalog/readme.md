@@ -1,4 +1,4 @@
-## CIS Benchmark - Custom Implementation
+## macOS Security Baselines
 
 **export/import notes** 
 
