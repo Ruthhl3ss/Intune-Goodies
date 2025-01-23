@@ -1,4 +1,4 @@
-# CIS Benchmark - Custom Implementation
+# macOS Security Baselines
 
 **This repository includes custom implementations of the CIS benchmarks, with slight modifications to enhance usability and compatibility across various environments.**
 ***Implementing the scripts and configuration profiles does not mean you are compliant with the CIS (or any other) benchmark***
