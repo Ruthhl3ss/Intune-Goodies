@@ -1,9 +1,11 @@
 ## Audit Apps that use Location Services
 
-# NOTE: This only works if you deploy these scripts as a set. You will need 3 scripts for this to work:
+## NOTE: This only works if you deploy these scripts as a set. You will need 3 scripts for this to work:
 **1- EnableLocationServiceIcon.sh (optional but recommended)** 
 **2- audit_apps_using_Locationservices.sh**
 **3- report_apps_using_Locationservices.sh**
+
+The **debug_script_apps_using_Locationservices.sh** is only used to test things locally. No Need to deploy this using Intune
 
 ## EEnableLocationServiceIcon.sh
 
