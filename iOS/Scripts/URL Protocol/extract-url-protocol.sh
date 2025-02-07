@@ -40,6 +40,8 @@
 #
 # Requirements:
 # - A valid .ipa file to analyze
+#
+# Note: the idea for this script came from another blog I found at: https://www.amerhukic.com/finding-the-custom-url-scheme-of-an-ios-app
 # -------------------------------------------------------------------------------------------------------------------------------
 
 # Check if an argument (file path) is provided
