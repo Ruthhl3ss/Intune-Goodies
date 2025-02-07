@@ -9,7 +9,7 @@
 
 The **debug_script_apps_using_Locationservices.sh** is only used to test things locally. No Need to deploy this using Intune
 
-## EEnableLocationServiceIcon.sh
+## EnableLocationServiceIcon.sh
 
 This script ensures that the **'Show Location Icon in Control Center when System Services Request Your Location'** setting is enabled on macOS devices. Enabling this setting provides users with visibility into when system services (such as Time Zone, Weather, or Find My Mac) are accessing their location.
 
