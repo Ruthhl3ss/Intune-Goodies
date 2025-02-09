@@ -43,7 +43,9 @@ Read the full blog here: https://allthingscloud.blog/whos-watching-auditing-maco
 
 ## Script settings: 
 **Run script as signed-in user:** No (run it as system).
+
 **Hide script notifications on devices:** Yes.
+
 **Script frequency:** Depending on how often you want the audit.
 
 
