@@ -42,11 +42,10 @@ While system services quietly access location data in the background, enabling t
 Read the full blog here: https://allthingscloud.blog/whos-watching-auditing-macos-location-services-with-intune/
 
 ## Script settings: 
-**Run script as signed-in user:** No (run it as system).
-
-**Hide script notifications on devices:** Yes.
-
-**Script frequency:** Depending on how often you want the audit.
+- **Run script as signed-in user:** No (run it as system).
+- **Hide script notifications on devices:** Yes.
+- **Script frequency:** Depending on how often you want the audit.
+- **Max number of times to retry if script fails:** 3 times
 
 
 
