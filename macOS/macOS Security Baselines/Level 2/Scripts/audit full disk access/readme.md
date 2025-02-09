@@ -1,6 +1,6 @@
 ## Audit Apps with Full Disk Access
 
-## NOTE: This only works if you deploy these scripts as a set. You will need 2 scripts for this to work:
+## NOTE: You will need 2 scripts for this to work:
 1. **audit_apps_with_FullDiskAccess.sh**
 2. **report_apps_with_FullDiskAccess.sh**
 
