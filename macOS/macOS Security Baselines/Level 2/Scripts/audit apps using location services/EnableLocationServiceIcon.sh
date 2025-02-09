@@ -37,8 +37,13 @@
 #
 # Requirements:
 # MDM to deploy script
+# Why use plist files instead of log files?
 # -------------------------------------------------------------------------------------------------------------------------------
-
+# Plist files offer structured, standardized data storage that integrates natively with macOS and MDM solutions like Intune.
+# They allow for consistent parsing and structured reporting, making them ideal for environments where data integrity and
+# easy retrieval are critical. Unlike log files, which are unstructured and prone to formatting inconsistencies,
+# plist files maintain a predictable format that ensures compatibility with automated systems.
+# -------------------------------------------------------------------------------------------------------------------------------
 # Define variables
 appname="EnableLocationIcon"
 logandmetadir="/Library/Logs/Microsoft/IntuneScripts/$appname"
