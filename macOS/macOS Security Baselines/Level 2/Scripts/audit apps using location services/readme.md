@@ -41,5 +41,10 @@ While system services quietly access location data in the background, enabling t
 1. **Deploy the scripts using Microsoft Intune**:
 Read the full blog here: https://allthingscloud.blog/whos-watching-auditing-macos-location-services-with-intune/
 
+## Script settings: 
+**Run script as signed-in user:** No (run it as system).
+**Hide script notifications on devices:** Yes.
+**Script frequency:** Depending on how often you want the audit.
+
 
 
