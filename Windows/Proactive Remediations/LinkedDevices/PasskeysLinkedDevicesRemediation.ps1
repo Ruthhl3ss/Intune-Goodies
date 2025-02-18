@@ -25,18 +25,18 @@ $VerbosePreference = "Continue"
 $basePath = "Registry::HKEY_USERS\S-1-5-20\Software\Microsoft\Cryptography\FIDO"
 
 try {
-    # Get all subkeys under the FIDO path
+    # Get all subkeys under basepath
     $fidoKeys = Get-ChildItem -Path $basePath -ErrorAction Stop
     $remediationNeeded = $false
     
     foreach ($key in $fidoKeys) {
-        # Check for LinkedDevices under each FIDO key
+        # Check for LinkedDevices under each subkey
         $linkedDevicesPath = Join-Path $key.PSPath "LinkedDevices"
         
         if (Test-Path $linkedDevicesPath) {
             Write-Verbose "Found LinkedDevices key at: $linkedDevicesPath"
             
-            # Remove only the device entries under LinkedDevices
+            # Remove only the device entries (sub keys) under LinkedDevices
             $devices = Get-ChildItem -Path $linkedDevicesPath -ErrorAction SilentlyContinue
             if ($devices) {
                 foreach ($device in $devices) {
