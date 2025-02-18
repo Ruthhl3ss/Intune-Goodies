@@ -1,18 +1,18 @@
-# FIDO Linked Devices Management Scripts
+# Passkey Linked Devices Management Scripts
 
 PowerShell scripts to manage FIDO/Passkey linked devices on Windows machines through Microsoft Intune.
 
 ## Overview
 
-These scripts help manage and remove FIDO linked devices (passkeys) from Windows machines. They can be deployed as Intune Proactive Remediation scripts.
+These scripts help manage and remove Passkey linked devices (Android) from Windows devices. They can be deployed using Intune as Proactive Remediation scripts.
 
 ### Target Registry Path
 
 The scripts target the following registry path:
 ```
-HKEY_USERS\S-1-5-20\Software\Microsoft\Cryptography\FIDO\{DYNAMIC-ID}\LinkedDevices
+HKEY_USERS\S-1-5-20\Software\Microsoft\Cryptography\FIDO\{DYNAMIC-SID}\LinkedDevices
 ```
-where `{DYNAMIC-ID}` is a unique identifier that varies
+where `{DYNAMIC-SID}` is a unique SID that varies
 
 ## Scripts
 
