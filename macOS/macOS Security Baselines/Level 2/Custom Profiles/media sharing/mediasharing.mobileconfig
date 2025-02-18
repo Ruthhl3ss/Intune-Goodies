@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+    <key>PayloadDisplayName</key>
+    <string>Media Sharing Restrictions</string>
+    <key>PayloadIdentifier</key>
+    <string>com.cislv2.mediasharingrestrictions</string>
+    <key>PayloadUUID</key>
+    <string>9E74E56B-D743-4A96-93B5-6EC51BA65BA5</string>
+    <key>PayloadScope</key>
+    <string>System</string>
+    <key>PayloadContent</key>
+    <array>
+
+        <!-- Disable Media Sharing -->
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.preferences.sharing.SharingPrefsExtension</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.cislv2.mediasharing.disable</string>
+            <key>PayloadUUID</key>
+            <string>39370CFE-7266-4285-8E2D-21A3630A59A7</string>
+            <key>PayloadEnabled</key>
+            <true/>
+            <key>mediaSharingUIStatus</key>
+            <integer>0</integer>
+        </dict>
+
+        <!-- Restrict Media Sharing Modification -->
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.applicationaccess</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>PayloadIdentifier</key>
+            <string>com.cislv2.mediasharing.restrictions</string>
+            <key>PayloadUUID</key>
+            <string>80C94BBC-F033-4F68-B52F-C62A95B9F8C2</string>
+            <key>PayloadEnabled</key>
+            <true/>
+            <key>allowMediaSharingModification</key>
+            <false/>
+        </dict>
+
+    </array>
+</dict>
+</plist>

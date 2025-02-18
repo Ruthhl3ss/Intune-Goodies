@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- 
+Safari History Retention Configuration Profile
+This profile configures how long Safari maintains browsing history
+
+HistoryAgeInDaysLimit options:
+1 - Keep history for 1 day
+7 - Keep history for 1 week
+14 - Keep history for 2 weeks  
+31 - Keep history for 1 month
+365 - Keep history for 1 year
+36500 - Keep history forever (approximately 100 years)
+-->
+<plist version="1.0">
+<dict>
+   <key>PayloadContent</key>
+   <array>
+   	<dict>
+   		<!-- Sets how long Safari will retain browsing history -->
+   		<key>HistoryAgeInDaysLimit</key>
+   		<integer>365</integer>
+   		<key>PayloadDisplayName</key>
+   		<string>Safari</string>
+   		<key>PayloadIdentifier</key>
+   		<string>com.apple.Safari.B47D8F31-A62B-46C4-9F82-D796C897720F</string>
+   		<key>PayloadType</key>
+   		<string>com.apple.Safari</string>
+   		<key>PayloadUUID</key>
+   		<string>B47D8F31-A62B-46C4-9F82-D796C897720F</string>
+   		<key>PayloadVersion</key>
+   		<integer>1</integer>
+   	</dict>
+   </array>
+   <key>PayloadDisplayName</key>
+   <string>Safari History Retention Policy</string>
+   <key>PayloadIdentifier</key>
+   <string>com.profiles.E5A89D12-CF34-41B7-8C45-F267A3D91E0B</string>
+   <key>PayloadType</key>
+   <string>Configuration</string>
+   <key>PayloadUUID</key>
+   <string>E5A89D12-CF34-41B7-8C45-F267A3D91E0B</string>
+   <key>PayloadVersion</key>
+   <integer>1</integer>
+</dict>
+</plist>

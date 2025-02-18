@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- PayloadContent contains the actual configuration settings -->
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>PayloadType</key>
+            <string>com.apple.dock</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <!-- Unique identifier for this Dock payload -->
+            <key>PayloadIdentifier</key>
+            <string>com.example.securehotcorners</string>
+            <key>PayloadUUID</key>
+            <string>2F4E2A9D-3C34-4D59-A3A3-1C2D8E6F2B99</string>
+            <key>PayloadEnabled</key>
+            <true/>
+            <key>PayloadDisplayName</key>
+            <string>Secure Hot Corners Settings</string>
+            <key>Forced</key>
+            <array>
+                <dict>
+                    <key>mcx_preference_settings</key>
+                    <dict>
+                        <!-- Bottom-left corner: Mission Control (1) -->
+                        <key>wvous-bl-corner</key>
+                        <integer>1</integer>
+
+                        <!-- Bottom-right corner: Application Windows (2) -->
+                        <key>wvous-br-corner</key>
+                        <integer>2</integer>
+
+                        <!-- Top-left corner: Start Screen Saver (5) -->
+                        <key>wvous-tl-corner</key>
+                        <integer>5</integer>
+
+                        <!-- Top-right corner: Start Screen Saver (5) -->
+                        <key>wvous-tr-corner</key>
+                        <integer>5</integer>
+                    </dict>
+                </dict>
+            </array>
+        </dict>
+    </array>
+    <!-- General profile metadata -->
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+    <!-- Unique identifier for this entire configuration profile -->
+    <key>PayloadIdentifier</key>
+    <string>com.example.securehotcorners.profile</string>
+    <key>PayloadUUID</key>
+    <string>8F3D1E7B-5A64-42B3-B5B9-6F3A1C4D2E88</string>
+    <!-- This name will be visible in System Preferences > Profiles on macOS -->
+    <key>PayloadDisplayName</key>
+    <string>Secure Hot Corners Profile - Intune Deployment</string>
+    <!-- Description for easy identification in the Profiles section -->
+    <key>PayloadDescription</key>
+    <string>This profile secures Hot Corners to prevent disabling the screen saver, deployed via Intune.</string>
+    <key>PayloadOrganization</key>
+    <string>Example Corp</string>
+</dict>
+</plist>
