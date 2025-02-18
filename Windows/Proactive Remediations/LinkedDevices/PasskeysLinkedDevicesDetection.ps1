@@ -12,7 +12,7 @@
 # https://github.com/oktay-sari/
 
 # SCRIPT VERSION/HISTORY:
-# 15-11-2023 - Oktay Sari - original script 
+# 17-02-2025 - Oktay Sari - original script 
 
 # MDM to deploy script
 # -------------------------------------------------------------------------------------------------------------------------------
@@ -26,11 +26,11 @@ $VerbosePreference = "Continue"
 $basePath = "Registry::HKEY_USERS\S-1-5-20\Software\Microsoft\Cryptography\FIDO"
 
 try {
-    # Get all subkeys under the FIDO path
+    # Get all subkeys under base path
     $fidoKeys = Get-ChildItem -Path $basePath -ErrorAction Stop
     
     foreach ($key in $fidoKeys) {
-        # Check for LinkedDevices under each key
+        # Check for LinkedDevices key under each subkey
         $linkedDevicesPath = Join-Path $key.PSPath "LinkedDevices"
         
         if (Test-Path $linkedDevicesPath) {
