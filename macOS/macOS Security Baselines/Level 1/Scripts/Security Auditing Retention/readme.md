@@ -1,22 +1,3 @@
-# CIS Benchmark - Custom Implementation
-
-**macOS - Hardening - Ensure Security Auditing Retention Is Enabled**
-
-This configuration ensures that security audit logs are retained for an extended period, supporting compliance and investigation needs.
-
-**Importance**  
-Enabling security audit retention helps organizations track system activity, detect anomalies, and support forensic investigations.
-
-**Key Points**  
-- Retains security audit logs for compliance and accountability.  
-- Provides valuable insights for detecting and responding to incidents.  
-- Aligns with CIS Level 1 benchmarks for macOS security.  
-
-
-
-This configuration is critical for maintaining a comprehensive audit trail.
-
-
 # macOS Audit Retention Configuration Script
 
 This script configures and manages the audit retention settings in the macOS audit subsystem by modifying the audit_control file. It implements the CIS Benchmark recommendation 3.4 regarding Security Auditing Retention settings.
