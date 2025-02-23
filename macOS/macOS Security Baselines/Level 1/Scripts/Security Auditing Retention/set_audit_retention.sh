@@ -15,8 +15,8 @@
 # https://github.com/oktay-sari/
 #
 # SCRIPT VERSION/HISTORY:
-# 23-02-2025 - Oktay Sari - Script version 1.0 initial script
-# 23-02-2025 - Oktay Sari - Script version 1.1 move backup to update function
+# 04-02-2025 - Oktay Sari - Script version 1.0 initial script
+# 08-02-2025 - Oktay Sari - Script version 1.1 move backup to update function
 # 12-02-2025 - Oktay Sari - Script version 1.2 add lock file
 # 15-02-2025 - Oktay Sari - Script version 1.3 add readonly variables
 # 19-02-2025 - Oktay Sari - Script version 1.4 add enhanced logging
