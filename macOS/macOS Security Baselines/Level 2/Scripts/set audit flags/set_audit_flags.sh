@@ -1,44 +1,42 @@
 #!/bin/bash
 
 ################################################################################
-# Script Name: set_audit_retention.sh
-# Description: This script checks and sets the audit_control file for correct retention settings on macOS.
-#              It ensures the file exists, copying from an example if necessary, updates retention settings using atomic operations,
-#              and manages backups of the audit_control file.
+# Script Name: set_audit_flags.sh
+# Description: This script checks and sets the audit_control file for correct audit flags on macOS.
+#              It ensures the file exists, copying from an example if necessary, updates audit flags
+#              using atomic operations, manages backups of the audit_control file, and handles the
+#              auditd service.
 #
-# NOTE: This script implements CIS Benchmark recommendation 3.4 Ensure Security Auditing Retention Is setting
-# 		THIS SCRIPT DOES NOT ENABLE THE AUDITD SUBSYSTEM. It only handles file creation and setting
-#		the required retention according to the CIS Benchmarks
+# NOTE: This script implements CIS Benchmark recommendations for Security Auditing
+#       This script WILL ENABLE THE AUDITD SUBSYSTEM if required flags are changed. 
 #
 # AUTHOR: Oktay Sari
 # https://allthingscloud.blog
 # https://github.com/oktay-sari/
 #
 # SCRIPT VERSION/HISTORY:
-# 23-02-2025 - Oktay Sari - Script version 1.0 initial script
-# 23-02-2025 - Oktay Sari - Script version 1.1 move backup to update function
-# 12-02-2025 - Oktay Sari - Script version 1.2 add lock file
-# 15-02-2025 - Oktay Sari - Script version 1.3 add readonly variables
-# 19-02-2025 - Oktay Sari - Script version 1.4 add enhanced logging
-# 22-02-2025 - Oktay Sari - Script version 1.5 add secure backup rotation
-# 23-02-2025 - Oktay Sari - Script version 1.6 handle the case where the expire-after line doesn't exist in the audit_control file.
+# 20-02-2025 - Oktay Sari - Script version 1.0 initial script
+# 21-02-2025 - Oktay Sari - Script version 1.1 build script based on retention script
+# 22-02-2025 - Oktay Sari - Script version 1.2 add service_path check to see if auditd is present on system
+# 24-02-2025 - Oktay Sari - Script version 1.3 update acquire_lock routine to use the same lock file to prevent concurrent access to the audit_control file.
 #
 # ------------------------------------------------------------------------------
 # DISCLAIMER:
-# This script is provided "as is" without warranties or guarantees of any kind. While it has been created to fulfill specific functions
-# and has worked effectively for my personal requirements, its performance may vary in different environments or use-cases.
+# This script is provided "as is" without warranties or guarantees of any kind. While it has been
+# created to fulfill specific functions and has worked effectively for my personal requirements,
+# its performance may vary in different environments or use-cases.
 # Users are advised to employ this script at their own discretion and risk.
-# No responsibility will be assumed for any direct, indirect, incidental, or consequential damages that may arise from its use.
+# No responsibility will be assumed for any direct, indirect, incidental, or consequential damages
+# that may arise from its use.
 #
 # ALWAYS TEST it in a controlled environment before deploying it in your production environment!
 # ------------------------------------------------------------------------------
 # 
-#
 # Usage: This script must be run as root, preferably via Intune.
 #
 # Note: This script is intended for macOS systems.
-# 		This script is by no means perfect. I'm not an expert bash programmer and learn with every script I write
-# 		If you think you have a good idea to further enhance this script, then please reach out.
+#       This script is by no means perfect. I'm not an expert bash programmer and learn with every script I write
+#       If you think you have a good idea to further enhance this script, then please reach out.
 #
 # DEPRECATION NOTICE
 #
@@ -52,8 +50,7 @@
 # re-enabling the system/com.apple.auditd service by running `launchctl enable
 # system/com.apple.auditd` as root, and rebooting.
 ################################################################################
-#
-#
+
 # Script settings, enable strict error handling
 set -euo pipefail
 IFS=$'\n\t'
@@ -65,10 +62,11 @@ readonly SCRIPT_NAME=$(basename "$0")
 readonly AUDIT_CONTROL_PATH="/etc/security/audit_control"
 readonly AUDIT_CONTROL_EXAMPLE_PATH="/etc/security/audit_control.example"
 readonly LOG_DIR="/Library/Logs/Microsoft/IntuneScripts/audit"
-readonly LOG_FILE="${LOG_DIR}/audit_retention_config.log"
-readonly DESIRED_RETENTION_SETTING="60d OR 5G"
+readonly LOG_FILE="${LOG_DIR}/audit_flags_config.log"
+readonly REQUIRED_FLAGS="-fm,ad,-ex,aa,-fr,lo,-fw"
 readonly MAX_BACKUPS=5
-readonly LOCK_FILE="/var/run/audit_retention_config.lock"
+readonly LOCK_FILE="/var/run/audit_config.lock"
+readonly AUDITD_SERVICE_PATH="/System/Library/LaunchDaemons/com.apple.auditd.plist"
 
 # Logging configuration - bash 3 compatible
 readonly LOG_LEVEL_DEBUG=0
@@ -105,8 +103,9 @@ log() {
 
 # File locking functions. We attempt to create a directory as a lock mechanism and retry for up to 30 seconds if unsuccessful, 
 # logging an error and exiting if it fails. The release_lock() removes this directory to release the lock, ensuring the script runs exclusively at any given time.
+
 acquire_lock() {
-    local timeout=30
+    local timeout=60
     local attempts=0
     
     while ! mkdir "$LOCK_FILE" 2>/dev/null; do
@@ -115,7 +114,7 @@ acquire_lock() {
             log "ERROR" "Failed to acquire lock after ${timeout} seconds"
             exit 1
         fi
-        sleep 1
+        sleep 3
     done
 }
 
@@ -135,6 +134,7 @@ cleanup() {
 }
 
 # Verify root privileges. When deployed with Intune, it should run as root by default. 
+
 check_root() {
     if [[ $(id -u) -ne 0 ]]; then
         log "ERROR" "This script must be run as root"
@@ -162,18 +162,16 @@ setup_logging() {
         chown root:wheel "$LOG_DIR"
     fi
     
-    # Rotate logs if they exceed 10MB
     if [[ -f "$LOG_FILE" && $(stat -f%z "$LOG_FILE") -gt 10485760 ]]; then
         mv "$LOG_FILE" "${LOG_FILE}.1"
         gzip "${LOG_FILE}.1"
     fi
 }
 
-validate_retention_setting() {
- local setting=$1
-    # Matches pattern like "60d OR 5G" with flexible spacing
-    if ! [[ $setting =~ ^[0-9]+d[[:space:]]+OR[[:space:]]+[0-9]+G$ ]]; then
-        log "ERROR" "Invalid retention setting format: $setting"
+validate_flags() {
+    local flags=$1
+    if ! [[ $flags =~ ^[-+[:alnum:],]+$ ]]; then
+        log "ERROR" "Invalid audit flags format: $flags"
         exit 1
     fi
 }
@@ -202,7 +200,6 @@ manage_audit_control() {
     chmod 400 "$AUDIT_CONTROL_PATH"
     chown root:wheel "$AUDIT_CONTROL_PATH"
     
-    # Verify permissions
     local perms
     perms=$(stat -f '%Sp' "$AUDIT_CONTROL_PATH")
     if [[ "$perms" != "-r--------" ]]; then
@@ -216,22 +213,22 @@ manage_audit_control() {
 #
 #
 # ----------------------------------------------------------------------------------------
-# START - Update audit retention with atomic operation
+# START - Update audit flags with atomic operation
 # ----------------------------------------------------------------------------------------
-update_audit_retention() {
-    local current_setting=""
-	validate_retention_setting "$DESIRED_RETENTION_SETTING"
+update_audit_flags() {
+    local current_flags=""
+    validate_flags "$REQUIRED_FLAGS"
 
-	# Check if expire-after line exists
-	if grep -q '^expire-after:' "$AUDIT_CONTROL_PATH"; then
+    # Check if flags line exists
+    if grep -q '^flags:' "$AUDIT_CONTROL_PATH"; then
     	# Extract the current retention setting from the file, cleaning up whitespace around it
-    	current_setting=$(grep '^expire-after:' "$AUDIT_CONTROL_PATH" | sed 's/^expire-after://' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
-	else
-   		log "INFO" "No expire-after setting found in audit_control, will add it"
-	fi
+        current_flags=$(grep '^flags:' "$AUDIT_CONTROL_PATH" | sed 's/^flags://' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+    else
+        log "INFO" "No flags setting found in audit_control, will add it"
+    fi
     
-    if [[ "$current_setting" != "$DESIRED_RETENTION_SETTING" ]]; then
-        log "INFO" "Updating retention from '${current_setting}' to '${DESIRED_RETENTION_SETTING}'"
+    if [[ "$current_flags" != "$REQUIRED_FLAGS" ]]; then
+        log "INFO" "Updating flags from '${current_flags}' to '${REQUIRED_FLAGS}'"
         
         # Create a backup before making changes
         local backup_path="${AUDIT_CONTROL_PATH}.bak_$(date '+%Y%m%d_%H%M%S')"
@@ -245,33 +242,31 @@ update_audit_retention() {
             log "ERROR" "Backup verification failed"
             exit 1
         fi
-
+        
         # Use a temporary file to safely prepare changes before applying them to the audit_control file
         local temp_file=$(mktemp)
         
-    # handle the case where the expire-after line doesn't exist in the audit_control file.    
-    if [[ -z "$current_setting" ]]; then
-    	# Line doesn't exist, append it to the file
-    	if ! cp "$AUDIT_CONTROL_PATH" "$temp_file"; then
-        	rm -f "$temp_file"
-        	log "ERROR" "Failed to copy audit_control file"
-        	exit 1
-    	fi
-    	if ! echo "expire-after:${DESIRED_RETENTION_SETTING}" >> "$temp_file"; then
-        	rm -f "$temp_file"
-        	log "ERROR" "Failed to add retention setting"
-        	exit 1
-    	fi
-	else
-    	# Line exists, update it
-    	if ! sed "s/^expire-after:.*$/expire-after:${DESIRED_RETENTION_SETTING}/" "$AUDIT_CONTROL_PATH" > "$temp_file"; then
-        	rm -f "$temp_file"
-        	log "ERROR" "Failed to update retention setting"
-        	exit 1
-    	fi
-	fi
+        if [[ -z "$current_flags" ]]; then
+            # Flags line doesn't exist, append it
+            if ! cp "$AUDIT_CONTROL_PATH" "$temp_file"; then
+                rm -f "$temp_file"
+                log "ERROR" "Failed to copy audit_control file"
+                exit 1
+            fi
+            if ! echo "flags:${REQUIRED_FLAGS}" >> "$temp_file"; then
+                rm -f "$temp_file"
+                log "ERROR" "Failed to add flags setting"
+                exit 1
+            fi
+        else
+            # Flags line exists, update it
+            if ! sed "s/^flags:.*$/flags:${REQUIRED_FLAGS}/" "$AUDIT_CONTROL_PATH" > "$temp_file"; then
+                rm -f "$temp_file"
+                log "ERROR" "Failed to update flags setting"
+                exit 1
+            fi
+        fi
         
-        # Replace the original file with the updated temporary file
         if ! mv "$temp_file" "$AUDIT_CONTROL_PATH"; then
             rm -f "$temp_file"
             log "ERROR" "Failed to replace audit_control file"
@@ -280,28 +275,71 @@ update_audit_retention() {
 
         chmod 400 "$AUDIT_CONTROL_PATH"
         chown root:wheel "$AUDIT_CONTROL_PATH"
-        log "INFO" "Retention setting updated successfully with atomic operations."
+        log "INFO" "Flags updated successfully with atomic operations."
 
         # Secure backup rotation. Perform secure backup rotation by locating all backup files named audit_control.bak_* in the directory
         # If rotation errors out, it will log the Error
-    	find "$(dirname "$AUDIT_CONTROL_PATH")" -name "audit_control.bak_*" -type f -exec stat -f "%m %N" {} \; |
-    		sort -nr |
-    		tail -n +$(($MAX_BACKUPS + 1)) |
-    		cut -d' ' -f2- |
-    		while IFS= read -r file; do
-        		rm -f "$file" || { log "ERROR" "Failed to delete old backup $file"; continue; }
-    		done
+        find "$(dirname "$AUDIT_CONTROL_PATH")" -name "audit_control.bak_*" -type f -exec stat -f "%m %N" {} \; |
+            sort -nr |
+            tail -n +$(($MAX_BACKUPS + 1)) |
+            cut -d' ' -f2- |
+            while IFS= read -r file; do
+                rm -f "$file" || { log "ERROR" "Failed to delete old backup $file"; continue; }
+            done
     else
-        log "INFO" "Retention setting already correct"
+        log "INFO" "Audit flags already correct"
     fi
 }
+
 # ----------------------------------------------------------------------------------------
-# END - Update audit retention with atomic operation
+# END - Update audit flags with atomic operation
 # ----------------------------------------------------------------------------------------
-# 
-# Set up trap handlers after all functions are defined
-# Enhanced error trap with context. When an error is triggered, it logs the error with specific details—including the script name, 
-# the line number where the error occurred, the command that caused the error, and its exit code
+
+
+# ----------------------------------------------------------------------------------------
+# START - check and start auditd service
+# ----------------------------------------------------------------------------------------
+manage_auditd_service() {
+    if [[ ! -f "$AUDITD_SERVICE_PATH" ]]; then
+        log "ERROR" "auditd service file missing"
+        return 1
+    fi
+
+    if launchctl print system/com.apple.auditd 2>/dev/null | grep -q 'state = running'; then
+        log "INFO" "auditd is already running"
+        return 0
+    fi
+
+    log "INFO" "Starting auditd service"
+    local attempts=0
+    local max_attempts=3
+    local wait_time=5
+    
+    while [[ $attempts -lt $max_attempts ]]; do
+        launchctl enable system/com.apple.auditd
+        launchctl bootstrap system "$AUDITD_SERVICE_PATH"
+        
+        sleep 2
+        
+        if launchctl print system/com.apple.auditd 2>/dev/null | grep -q 'state = running'; then
+            log "INFO" "auditd started successfully"
+            return 0
+        fi
+        
+        attempts=$((attempts + 1))
+        wait_time=$((wait_time * 2))
+        log "WARN" "Attempt $attempts failed, waiting ${wait_time}s before retry"
+        sleep "$wait_time"
+    done
+    
+    log "ERROR" "Failed to start auditd after $max_attempts attempts"
+    return 1
+}
+# ----------------------------------------------------------------------------------------
+# END - check and start auditd service
+# ----------------------------------------------------------------------------------------
+
+# Set up trap handlers
 trap 'last_error=$?; log "ERROR" "Error in ${SCRIPT_NAME} at line $LINENO executing: $BASH_COMMAND (exit code: $last_error)"; exit $last_error' ERR
 trap cleanup EXIT
 trap 'exit $?' TERM INT
@@ -312,11 +350,15 @@ main() {
     validate_paths
     setup_logging
     
-    log "INFO" "Starting audit configuration"
+    log "INFO" "Starting audit flags configuration"
     
     acquire_lock
     manage_audit_control
-    update_audit_retention
+    update_audit_flags
+    
+    if ! manage_auditd_service; then
+        log "WARN" "Failed to manage auditd service, but flags were set successfully"
+    fi
     
     log "INFO" "Script completed successfully"
 }
