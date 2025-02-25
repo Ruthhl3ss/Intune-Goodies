@@ -24,13 +24,13 @@ This Bash script will configure macOS security auditing flags to meet CIS recomm
 
 The script configures specific security auditing flags on macOS devices by modifying the `/etc/security/audit_control` file. The following audit flags are set:
 
-- **`-fm`**: Mandatory Access Control (MAC) policy violations
+- **`-fm`**: file attribute modify (Record failed events)
 - **`ad`**: Administrative actions
-- **`-ex`**: Execution of processes
-- **`aa`**: Authentication events
-- **`-fr`**: File read events
+- **`-ex`**: program execution (Record failed events)
+- **`aa`**: authentication and authorization
+- **`-fr`**: file read (Record failed events)
 - **`lo`**: Login/logout events
-- **`-fw`**: File write events
+- **`-fw`**: file write (Record failed events)
 
 
 ## ⚠️ HIGH IMPACT
