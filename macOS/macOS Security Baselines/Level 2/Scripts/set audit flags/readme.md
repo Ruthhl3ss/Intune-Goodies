@@ -39,7 +39,6 @@ The script configures specific security auditing flags on macOS devices by modif
 - **May cause system slowdowns**
 - **Could impact application performance**
 - **Increases overall system load**
-
 - systems perform thousands of file operations per minute
 - Multiple users or services generate many authentication events
 - Administrative tasks often involve numerous sub-operations
