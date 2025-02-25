@@ -138,8 +138,6 @@ Common issues and solutions:
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## Author
-
 ## Disclaimer
 
 While this script has been created to fulfill specific functions and has worked effectively for personal requirements, its performance may vary in different environments or use-cases. Users are advised to employ this script at their own discretion and risk. No responsibility will be assumed for any direct, indirect, incidental, or consequential damages that may arise from its use.
