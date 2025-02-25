@@ -3,6 +3,7 @@
 ## 🚨 Emergency Fix for macOS auditd Issues 🚨
 
 This script is designed to (try and) restore the macOS audit daemon (auditd) when something goes wrong with the audit configuration. It works by restoring the original audit_control settings from the example file.
+Read this blog for full explanation: https://allthingscloud.blog/how-i-accidentally-fort-knoxd-myself/
 
 ## 🛠️ What This Script Does
 

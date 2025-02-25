@@ -1,4 +1,5 @@
 # macOS Audit Flags Configuration Script
+Read this blog for full explanation: https://allthingscloud.blog/how-i-accidentally-fort-knoxd-myself/
 
 ## ⚠️ CRITICAL WARNING - USE AT YOUR OWN RISK
 

@@ -1,6 +1,7 @@
 # macOS Audit Retention Configuration Script
 
 This script configures and manages the audit retention settings in the macOS audit subsystem by modifying the audit_control file. It implements the CIS Benchmark recommendation 3.4 regarding Security Auditing Retention settings.
+Read this blog for full explanation: https://allthingscloud.blog/how-i-accidentally-fort-knoxd-myself/
 
 ## Important Notice
 
