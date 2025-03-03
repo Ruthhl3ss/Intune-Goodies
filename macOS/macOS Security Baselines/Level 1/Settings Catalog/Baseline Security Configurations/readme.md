@@ -26,7 +26,7 @@ This profile disables the following features:
 - **Allow Erase Content and Settings**: `False`  
 - **Allow UI Configuration Profile Installation**: `False`  
 - **Allow Cloud Private Relay**: `False`  
-- **Allow Password Auto Fill**: `False`  
+- **Allow Password Auto Fill**: `False`  ⚠️ WILL BREAK PSSO
 - **Allow iTunes File Sharing**: `False`  
 
 ## Benefits  
