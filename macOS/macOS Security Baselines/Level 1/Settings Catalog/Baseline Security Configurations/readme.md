@@ -16,7 +16,7 @@ This profile disables the following features:
 - **Apple Personalized Advertising**: Disables personalized ads to reduce data sharing with Apple.  
 - **Password Proximity Requests**: Blocks password sharing requests based on proximity to other devices.  
 - **Password Sharing**: Restricts the ability to share passwords between devices.  
-- **Password Auto Fill**: Prevents automatic password filling for enhanced credential security.  
+- **Password Auto Fill**: Prevents automatic password filling for enhanced credential security.  ⚠️ WILL BREAK PSSO 
 
 ## Configuration Values  
 - **Allow Apple Personalized Advertising**: `False`  
@@ -26,7 +26,7 @@ This profile disables the following features:
 - **Allow Erase Content and Settings**: `False`  
 - **Allow UI Configuration Profile Installation**: `False`  
 - **Allow Cloud Private Relay**: `False`  
-- **Allow Password Auto Fill**: `False`  ⚠️ WILL BREAK PSSO
+- **Allow Password Auto Fill**: `False` ⚠️ WILL BREAK PSSO 
 - **Allow iTunes File Sharing**: `False`  
 
 ## Benefits  
