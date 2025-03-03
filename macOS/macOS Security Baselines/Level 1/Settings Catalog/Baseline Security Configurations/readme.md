@@ -4,6 +4,8 @@
 This profile combines **CIS recommendations**, **best practices**, and **lessons learned** to enhance the security and privacy of macOS devices. 
 It restricts various features and configurations that could introduce security risks, ensuring a more controlled and compliant environment.  
 
+⚠️ **HIGH IMPACT ON PSSO**: When the **Allow Password Auto Fill** is set to `False`, it will break Platform SSO! So if you need PSSO, make sure you set this value to true, or leave it unconfigured.
+
 ## Key Features  
 This profile disables the following features:  
 - **Installation of Configuration Profiles through the User Interface**: Prevents unauthorized or unmonitored configuration changes.  
