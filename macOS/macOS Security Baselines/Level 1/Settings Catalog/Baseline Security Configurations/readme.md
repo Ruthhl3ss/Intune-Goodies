@@ -29,7 +29,7 @@ This profile disables the following features:
 | Allow Erase Content and Settings | False | False | |
 | Allow UI Configuration Profile Installation | False | False | |
 | Allow Cloud Private Relay | False | False | |
-| Allow Password Auto Fill | False | True | **IMPACT:** Will break PSSO when set to true |
+| Allow Password Auto Fill | False | True | ⚠️ Will break PSSO when set to true |
 | Allow iTunes File Sharing | False | False | |
 
 
@@ -41,6 +41,6 @@ The table above shows both the CIS (Center for Internet Security) recommended va
 - **Improved Privacy**: Reduces data sharing with third parties and between devices.  
 - **Organizational Control**: Ensures tighter control over device configuration and usage.  
 
-## 🚨 IMPACT
+## ⚠️  IMPACT
 Disabling these features may affect user convenience in some cases. It is important to communicate these changes to users and provide guidance on alternative workflows as needed. This profile is best suited for environments where security and compliance are priorities.
 - Setting Allow Password Auto Fill to `False` will break PSSO (Platform SSO)
