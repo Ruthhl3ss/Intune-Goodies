@@ -138,7 +138,7 @@ The Custom Attribute script will report one of the following formats to Intune:
 | First run | `PUA_Policy=audit` |
 | Policy change detected | `PUA_Policy=Changed from audit to block on 2025-02-28 count=1` |
 | Previous change, to new change | `PUA_Policy=audit (Changed from block to audit on 2025-03-05 count=2)` |
-| Change detectec but no new changes | `PUA_Policy=audit (Changed from block to audit on 2025-03-05 count=2)` |
+| Change detected but no new changes | `PUA_Policy=audit (Changed from block to audit on 2025-03-05 count=2)` |
 | Unchanged policy (no changes ever detected) | `PUA_Policy=audit (unchanged since 2025-02-15)` |
 | No logs exist yet | `PUA_Policy=No information available yet - MDATP checker has not run` |
 | Error condition | `PUA_Policy=DEFENDER_ERROR` or `PUA_Policy=ERROR` |
