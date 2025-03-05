@@ -21,7 +21,7 @@
 #
 # Output: 
 #   - A single line with the PUA policy state formatted for Intune Custom Attributes
-#   - Example: "PUA_Policy=audit" or "PUA_Policy=Changed from audit to block on 2025-02-28"
+#   - Example: "PUA_Policy=audit" or "PUA_Policy=Changed from audit to block on 2025-02-28 count=1"
 #
 # Required Files:
 #   - This script expects files created by the enhanced_mdatp_pua.sh script
@@ -32,6 +32,10 @@
 #                 (pua_policy.log)
 #   - PREVIOUS_STATE_FILE: Stores the previous policy state for change detection
 #                         (previous_pua_state.txt)
+#   - CHANGE_FILE: Records the last detected policy change details
+#                 (last_policy_change.txt)
+#   - COUNTER_FILE: Tracks how many times the policy has changed
+#                  (policy_change_counter.txt)
 #
 # AUTHOR: Oktay Sari
 # https://allthingscloud.blog
@@ -43,9 +47,11 @@
 # 28-02-2025 - Oktay Sari - Script version 1.2 Added special message when no log files exist yet
 # 28-02-2025 - Oktay Sari - Script version 1.3 Added debug mode for easier testing
 # 28-02-2025 - Oktay Sari - Script version 1.4 Fixed debug output to prevent it from mixing with regular output
+# 05-03-2025 - Oktay Sari - Script version 1.5 Enhanced to persistently track policy changes and count occurrences (shout-out to Melvin Luijten for the feedback)
 #
 # CREDITS:
 # 	- Designed to work with the enhanced_mdatp_pua.sh script for Microsoft Defender
+#	- Shout-out to Melvin Luijten for providing feedback and testing both scripts (https://www.linkedin.com/in/melvin-luijten-3973a6b1/)
 #
 # ------------------------------------------------------------------------------
 # DISCLAIMER:
@@ -67,6 +73,8 @@ readonly LOG_DIR="/Library/Logs/Microsoft/IntuneScripts/mdatp"
 readonly POLICY_FILE="$LOG_DIR/pua_policy.log"
 readonly CURRENT_POLICY_FILE="$LOG_DIR/current_pua_policy.txt"
 readonly PREVIOUS_STATE_FILE="$LOG_DIR/previous_pua_state.txt"
+readonly CHANGE_FILE="$LOG_DIR/last_policy_change.txt"
+readonly COUNTER_FILE="$LOG_DIR/policy_change_counter.txt"
 
 # Function definitions
 # -----------------------------------------------------------------------------
@@ -152,12 +160,60 @@ get_current_pua_state() {
     fi
 }
 
+# Function to track policy changes and maintain counter
+track_policy_change() {
+    local current_state="$1"
+    local previous_state="$2"
+    
+    debug "Tracking policy change from $previous_state to $current_state"
+    
+    # Create log directory if it doesn't exist
+    if [ ! -d "$LOG_DIR" ]; then
+        mkdir -p "$LOG_DIR"
+    fi
+    
+    # Record the current date and the change details
+    echo "$(date '+%Y-%m-%d')|$previous_state|$current_state" > "$CHANGE_FILE"
+    
+    # Update counter
+    if [ -f "$COUNTER_FILE" ] && [ -s "$COUNTER_FILE" ]; then
+        local current_count=$(cat "$COUNTER_FILE")
+        local new_count=$((current_count + 1))
+        echo "$new_count" > "$COUNTER_FILE"
+        debug "Incrementing change counter to $new_count"
+    else
+        # First change detected
+        echo "1" > "$COUNTER_FILE"
+        debug "Initializing change counter to 1"
+    fi
+}
+
+# Function to read the last policy change information
+get_last_policy_change() {
+    if [ -f "$CHANGE_FILE" ] && [ -s "$CHANGE_FILE" ]; then
+        cat "$CHANGE_FILE"
+        return 0
+    fi
+    
+    # No change record exists
+    return 1
+}
+
+# Function to get the change counter
+get_change_counter() {
+    if [ -f "$COUNTER_FILE" ] && [ -s "$COUNTER_FILE" ]; then
+        cat "$COUNTER_FILE"
+    else
+        echo "0"
+    fi
+}
+
 # Main script execution
 # -----------------------------------------------------------------------------
 
 if [ "$DEBUG" -eq 1 ]; then
     echo "=== MDATP Custom Attribute Script Started (Debug Mode) ===" >&2
-    debug "Script version 1.4"
+    debug "Script version 1.5"
     debug "Checking for MDATP log files"
 fi
 
@@ -197,10 +253,27 @@ if [ "$PREVIOUS_STATE" = "INITIAL_CHECK" ]; then
     echo "PUA_Policy=$CURRENT_STATE"
 elif [ "$CURRENT_STATE" != "$PREVIOUS_STATE" ]; then
     debug "State change detected - reporting change"
-    echo "PUA_Policy=Changed from $PREVIOUS_STATE to $CURRENT_STATE on $(date '+%Y-%m-%d')"
+    # Record this change for future reference
+    track_policy_change "$CURRENT_STATE" "$PREVIOUS_STATE"
+    counter=$(get_change_counter)
+    echo "PUA_Policy=Changed from $PREVIOUS_STATE to $CURRENT_STATE on $(date '+%Y-%m-%d') count=$counter"
 else
-    debug "No change in state - reporting with last change date"
-    echo "PUA_Policy=$CURRENT_STATE (unchanged since $(date -r "$PREVIOUS_STATE_FILE" '+%Y-%m-%d'))"
+    # Check if there was a previous change recorded
+    if get_last_policy_change > /dev/null; then
+        # There was a change in the past, report it along with current state
+        change_info=$(get_last_policy_change)
+        change_date=$(echo "$change_info" | cut -d'|' -f1)
+        old_state=$(echo "$change_info" | cut -d'|' -f2)
+        new_state=$(echo "$change_info" | cut -d'|' -f3)
+        counter=$(get_change_counter)
+        
+        debug "No new change, but reporting previous change"
+        echo "PUA_Policy=$CURRENT_STATE (Changed from $old_state to $new_state on $change_date count=$counter)"
+    else
+        # No change has ever been recorded
+        debug "No change in state - reporting with last check date"
+        echo "PUA_Policy=$CURRENT_STATE (unchanged since $(date -r "$PREVIOUS_STATE_FILE" '+%Y-%m-%d'))"
+    fi
 fi
 
 if [ "$DEBUG" -eq 1 ]; then

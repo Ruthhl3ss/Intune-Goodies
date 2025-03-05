@@ -56,6 +56,7 @@
 # 	- The service check function was inspired by Neil Johnsons CheckDefenderRunning script:
 #  	- https://github.com/microsoft/shell-intune-samples/blob/master/macOS/Custom%20Attributes/checkDefenderRunning/checkDefenderRunning.sh
 #	- Original script idea to check for PUA status: Melvin Luijten
+#	- Shout-out to Melvin Luijten for providing feedback and testing both scripts (https://www.linkedin.com/in/melvin-luijten-3973a6b1/)
 #
 # ------------------------------------------------------------------------------
 # DISCLAIMER:
