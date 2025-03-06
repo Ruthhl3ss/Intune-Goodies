@@ -1,6 +1,8 @@
-# macOS - Hardening - Baseline Security Profile  
+# CIS Benchmark Custom Implementation
 
-## Overview  
+## Profile name: macOS - Hardening - Baseline Security Profile  
+
+## Overview
 This profile combines **CIS recommendations**, **best practices**, and **lessons learned** to enhance the security and privacy of macOS devices. 
 It restricts various features and configurations that could introduce security risks, ensuring a more controlled and compliant environment.  
 
@@ -18,21 +20,35 @@ This profile disables the following features:
 - **Password Sharing**: Restricts the ability to share passwords between devices.  
 - **Password Auto Fill**: Prevents automatic password filling for enhanced credential security.  ⚠️ WILL BREAK PSSO 
 
-## Configuration Values  
-- **Allow Apple Personalized Advertising**: `False`  
-- **Allow Password Proximity Requests**: `False`  
-- **Allow Password Sharing**: `False`  
-- **Allow File Sharing Modification**: `False`  
-- **Allow Erase Content and Settings**: `False`  
-- **Allow UI Configuration Profile Installation**: `False`  
-- **Allow Cloud Private Relay**: `False`  
-- **Allow Password Auto Fill**: `False` ⚠️ WILL BREAK PSSO 
-- **Allow iTunes File Sharing**: `False`  
+## Configuration Values
+
+| Configuration Name | CIS Recommendation | Current Setting | Notes |
+|-------------------|--------------------:|-----------------|-------|
+| Allow Apple Personalized Advertising | False | False | |
+| Allow Password Proximity Requests | False | False | |
+| Allow Password Sharing | False | False | |
+| Allow File Sharing Modification | False | False | |
+| Allow Erase Content and Settings | False | False | |
+| Allow UI Configuration Profile Installation | False | False | |
+| Allow Cloud Private Relay | False | False | |
+| Allow Password Auto Fill | False | True | ⚠️ Will break PSSO when set to true |
+| Allow iTunes File Sharing | False | False | |
+
+
+## Understanding the Table
+The table above shows both the CIS (Center for Internet Security) recommended values and our current implementation. Where these values differ, we've made a risk-based decision to either increase security beyond CIS recommendations or to allow specific functionality based on organizational needs. **Review these settings carefully when implementing.**
 
 ## Benefits  
 - **Enhanced Security**: Limits features that could expose sensitive data or settings.  
 - **Improved Privacy**: Reduces data sharing with third parties and between devices.  
 - **Organizational Control**: Ensures tighter control over device configuration and usage.  
 
-## Considerations  
-Disabling these features may affect user convenience in some cases. It is important to communicate these changes to users and provide guidance on alternative workflows as needed. This profile is best suited for environments where security and compliance are priorities.  
+## ⚠️  IMPACT
+Disabling these features may affect user convenience in some cases. It is important to communicate these changes to users and provide guidance on alternative workflows as needed. This profile is best suited for environments where security and compliance are priorities.
+- Setting Allow Password Auto Fill to `False` will break PSSO (Platform SSO)
+
+**Deployment:**
+1. Import the JSON configuration to Microsoft Intune
+2. Review the application list and settings
+3. Adjust as needed to match organizational requirements
+4. Assign to appropriate device groups or users
