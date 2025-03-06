@@ -16,7 +16,7 @@ This profile configures the following features:
 
 ## Configuration Values  
 | Configuration Name | CIS Recommendation | Current Setting | Notes |
-|-------------------|--------------------:|-----------------|-------|
+|-------------------|-------------------|-----------------|-------|
 | Wake on LAN (Laptop Power) | False | False | |
 | Wake On Modem Ring (Laptop Power) | False | False | |
 | Wake on LAN (Desktop Power) | False | False | |
@@ -24,7 +24,7 @@ This profile configures the following features:
 | Wake on LAN (Laptop Battery Power) | False | False | |
 | Wake On Modem Ring (Laptop Battery Power) | False | False | |
 
-**Configure Based on your needs**
+Based on your needs
 
 ## Understanding the Table
 The table above shows both the CIS (Center for Internet Security) recommended values and our current implementation. Where these values differ, we've made a risk-based decision to either increase security beyond CIS recommendations or to allow specific functionality based on organizational needs. **Review these settings carefully when implementing.**
