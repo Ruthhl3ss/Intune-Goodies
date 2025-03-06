@@ -36,3 +36,9 @@ The table above shows both the CIS (Center for Internet Security) recommended va
 AirDrop is super handy for sharing files between Apple devices, but leaving it on all the time can expose your device to privacy risks and unwanted file requests. The best practice? Keep it off by default and only switch it on when you actually need to send or receive files.
 
 AirPlay Receiver, which lets you share your screen with other Apple devices, is another great feature—but it's better to use it only when needed. Leaving it on all the time could lead to misuse or even denial-of-service issues. By setting up configuration profiles, you can easily keep these features off by default and stay secure.
+
+**Deployment:**
+1. Import the JSON configuration to Microsoft Intune
+2. Review the application list and settings
+3. Adjust as needed to match organizational requirements
+4. Assign to appropriate device groups or users

@@ -48,4 +48,10 @@ Services like **"Find My Mac"** will not function when the device is asleep. A *
 
 This trade-off should be carefully considered in environments requiring remote management or device tracking.
 
+**Deployment:**
+1. Import the JSON configuration to Microsoft Intune
+2. Review the application list and settings
+3. Adjust as needed to match organizational requirements
+4. Assign to appropriate device groups or users
+
 **Note:** This implements CIS Benchmark 2.9.3 Ensure Wake for Network Access Is Disabled. Only use this profile when the impact is acceptable.

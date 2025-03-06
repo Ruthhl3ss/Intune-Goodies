@@ -28,7 +28,6 @@ The table above shows both the CIS (Center for Internet Security) recommended va
 
 ## Benefits  
 - **Enhanced Security**: Limits features that could expose sensitive data or settings.  
-- **Improved Privacy**: Reduces data sharing with third parties and between devices.  
 - **Organizational Control**: Ensures tighter control over device configuration and usage.  
 - **Compliance Alignment**: Supports organizational security policies and compliance efforts.
 - **Malware Protection**: Significantly reduces the risk of malicious software installation.
@@ -41,5 +40,11 @@ It ensures that only apps downloaded from the Mac App Store or identified develo
 By requiring apps to be signed and notarized, Gatekeeper acts as a filter, blocking potentially harmful applications while still giving you control to allow trusted exceptions when necessary. 
 
 It's a critical layer of security that works seamlessly in the background, keeping your Mac safe without compromising usability.
+
+**Deployment:**
+1. Import the JSON configuration to Microsoft Intune
+2. Review the application list and settings
+3. Adjust as needed to match organizational requirements
+4. Assign to appropriate device groups or users
 
 **Note:** This implements CIS recommendation 2.6.5 Ensure Gatekeeper Is Enabled (Level 1).

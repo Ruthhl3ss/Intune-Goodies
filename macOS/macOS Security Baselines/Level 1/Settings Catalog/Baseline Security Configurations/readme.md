@@ -44,3 +44,9 @@ The table above shows both the CIS (Center for Internet Security) recommended va
 ## ⚠️  IMPACT
 Disabling these features may affect user convenience in some cases. It is important to communicate these changes to users and provide guidance on alternative workflows as needed. This profile is best suited for environments where security and compliance are priorities.
 - Setting Allow Password Auto Fill to `False` will break PSSO (Platform SSO)
+
+**Deployment:**
+1. Import the JSON configuration to Microsoft Intune
+2. Review the application list and settings
+3. Adjust as needed to match organizational requirements
+4. Assign to appropriate device groups or users

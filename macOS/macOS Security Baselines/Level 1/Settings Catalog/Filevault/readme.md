@@ -34,7 +34,6 @@ The table above shows both the CIS (Center for Internet Security) recommended va
 
 ## Benefits  
 - **Enhanced Security**: Limits features that could expose sensitive data or settings.  
-- **Improved Privacy**: Reduces data sharing with third parties and between devices.  
 - **Organizational Control**: Ensures tighter control over device configuration and usage.  
 - **Compliance Alignment**: Supports organizational security policies and compliance efforts.
 - **Data Protection**: Protects confidential information if a device is lost or stolen.
@@ -45,5 +44,11 @@ FileVault is like putting your Mac's data in a super-secure vault—it encrypts 
 Think of it as the ultimate lock to keep your sensitive information safe from prying eyes.
 
 Turning it on is easy and smart!
+
+**Deployment:**
+1. Import the JSON configuration to Microsoft Intune
+2. Review the application list and settings
+3. Adjust as needed to match organizational requirements
+4. Assign to appropriate device groups or users
 
 **Note:** This implements CIS recommendation 2.6.6 Ensure FileVault Is Enabled (Level 1).

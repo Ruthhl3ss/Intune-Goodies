@@ -40,4 +40,9 @@ This configuration takes a proactive approach to data protection. By disabling i
 - Reduced cloud accessibility of desktop and document files
 - Increased local data control
 
+**Deployment:**
+1. Import the JSON configuration to Microsoft Intune
+2. Review the settings to ensure they meet your specific security requirements
+3. Assign to appropriate device groups or users
+
 **Note:** This implements CIS Benchmark Recommendation 2.1.1.3 Ensure iCloud Drive Document and Desktop Sync Is Disabled (Automated). Always test configuration profiles in a controlled environment before widespread deployment.

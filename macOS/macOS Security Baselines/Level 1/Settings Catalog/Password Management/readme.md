@@ -35,7 +35,6 @@ The table above shows both the CIS (Center for Internet Security) recommended va
 
 ## Benefits  
 - **Enhanced Security**: Limits features that could expose sensitive data or settings.  
-- **Improved Privacy**: Reduces data sharing with third parties and between devices.  
 - **Organizational Control**: Ensures tighter control over device configuration and usage.  
 - **Compliance Alignment**: Supports organizational security policies and compliance efforts.
 - **Account Protection**: Reduces risk of unauthorized access through credential attacks.
@@ -49,5 +48,11 @@ If you do not configure this setting, every user on the device MUST RESET their 
 **NOTE:** Make sure to test this policy in combination with Platform SSO. 
 Do not set these settings in a compliance policy because that will always trigger a password change. 
 A passcode setting in a compliance policy **always sets the "Change At Next Auth" to true.**
+
+**Deployment:**
+1. Import the JSON configuration to Microsoft Intune
+2. Review the application list and settings
+3. Adjust as needed to match organizational requirements
+4. Assign to appropriate device groups or users
 
 This configuration implements CIS Benchmark section 5.2 Password Management (Level 1).

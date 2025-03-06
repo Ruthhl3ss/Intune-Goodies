@@ -28,4 +28,10 @@ This configuration ensures that devices synchronize with Apple’s official time
 Proper time synchronization is critical for authentication processes, audit logs, and overall system reliability.
 
 ## ⚠️  IMPACT
-No impact
+No known impact
+
+**Deployment:**
+1. Import the JSON configuration to Microsoft Intune
+2. Review the application list and settings
+3. Adjust as needed to match organizational requirements
+4. Assign to appropriate device groups or users
