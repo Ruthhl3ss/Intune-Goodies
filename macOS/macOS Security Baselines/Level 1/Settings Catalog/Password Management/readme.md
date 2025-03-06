@@ -20,12 +20,13 @@ This profile configures the following features:
 |-------------------|-------------------|-----------------|-------|
 | Require Complex Passcode | True | True | |
 | Change At Next Auth | - | Disabled | ⚠️ Prevents forced password reset at next login |
-| Failed Attempts Reset In Minutes | - | 15 | |
-| Maximum Passcode Age In Days | - | 365 | |
-| Minimum Passcode Length | - | 15 | |
-| Maximum Number of Failed Attempts | - | 5 | |
+| Failed Attempts Reset In Minutes | 5 | 15 | |
+| Maximum Passcode Age In Days | 365 | 365 | |
+| Minimum Passcode Length | 15 | 15 | |
+| Maximum Number of Failed Attempts | 5 | 5 | |
 | Automatic Device Lock | - | 15 | |
-| Minimum Complex Characters | - | 2 | |
+| Minimum Complex Characters | 2 | 2 | |
+| PPasscode Reuse Limit | 15 | 15 | |
 
 Based on your needs
 
